@@ -1,0 +1,35 @@
+== Portal for automatic correction of homework
+
+Rails application for automatic correction of homeworks
+supports:
+  java
+  xquery
+  xslt
+
+== Instalation
+
+install rails
+
+  gem install rails
+
+install dependencies
+
+  bundle install
+
+migrate and seed db
+
+  rake db:reset
+
+== Usage
+
+login as user with:
+
+  uco: 111111
+  pass: 123456
+
+Upload works in directory:
+  exmaples/implementation/good|wrong
+
+== Documentation
+
+  doc/index.html

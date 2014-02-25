@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+
+<title>class WorksController - Rails Application Documentation</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>app/controllers/works_controller.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link"><a href="ApplicationController.html">ApplicationController</a>
+  
+</nav>
+
+    <!-- Included Modules -->
+<nav id="includes-section" class="section">
+  <h3 class="section-header">Included Modules</h3>
+
+  <ul class="link-list">
+  
+  
+    <li><span class="include">ActionView::Helpers::TextHelper</span>
+  
+  
+  </ul>
+</nav>
+
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-i-create">#create</a>
+    
+    <li><a href="#method-i-destroy">#destroy</a>
+    
+    <li><a href="#method-i-edit">#edit</a>
+    
+    <li><a href="#method-i-generated">#generated</a>
+    
+    <li><a href="#method-i-homework">#homework</a>
+    
+    <li><a href="#method-i-index">#index</a>
+    
+    <li><a href="#method-i-show">#show</a>
+    
+    <li><a href="#method-i-update">#update</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="./doc/README_FOR_APP.html">README_FOR_APP</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./ApplicationController.html">ApplicationController</a>
+  
+    <li><a href="./ApplicationHelper.html">ApplicationHelper</a>
+  
+    <li><a href="./Task.html">Task</a>
+  
+    <li><a href="./TasksController.html">TasksController</a>
+  
+    <li><a href="./TasksHelper.html">TasksHelper</a>
+  
+    <li><a href="./User.html">User</a>
+  
+    <li><a href="./Work.html">Work</a>
+  
+    <li><a href="./WorksController.html">WorksController</a>
+  
+    <li><a href="./WorksHelper.html">WorksHelper</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class WorksController</h1>
+
+  <div id="description" class="description">
+    
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-create" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">create</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="create-source">
+            <pre><span class="ruby-comment"># File app/controllers/works_controller.rb, line 89</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">create</span>
+  <span class="ruby-ivar">@work</span> = <span class="ruby-constant">Work</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:work</span>])
+  <span class="ruby-ivar">@work</span>.<span class="ruby-identifier">task_id</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:task_id</span>]
+  <span class="ruby-ivar">@work</span>.<span class="ruby-identifier">user_id</span> = <span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">id</span>
+
+  <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@work</span>.<span class="ruby-identifier">save</span>
+
+      <span class="ruby-keyword">if</span> <span class="ruby-ivar">@work</span>.<span class="ruby-identifier">task</span>.<span class="ruby-identifier">language</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;java&quot;</span>
+        <span class="ruby-identifier">require</span> <span class="ruby-string">&quot;FileUtils&quot;</span>
+        <span class="ruby-identifier">new_file_path</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-constant">Rails</span>.<span class="ruby-identifier">root</span>, <span class="ruby-string">&quot;homework/src&quot;</span>, <span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">uco</span>.<span class="ruby-identifier">to_s</span>, <span class="ruby-ivar">@work</span>.<span class="ruby-identifier">id</span>.<span class="ruby-identifier">to_s</span>, <span class="ruby-ivar">@work</span>.<span class="ruby-identifier">task</span>.<span class="ruby-identifier">package</span>, <span class="ruby-ivar">@work</span>.<span class="ruby-identifier">homework_file_name</span>)
+        <span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">mkdir_p</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-identifier">new_file_path</span>))
+        <span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">cp</span> <span class="ruby-ivar">@work</span>.<span class="ruby-identifier">homework</span>.<span class="ruby-identifier">path</span>, <span class="ruby-identifier">new_file_path</span>
+
+        <span class="ruby-identifier">classes_path</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-constant">Rails</span>.<span class="ruby-identifier">root</span>, <span class="ruby-string">&quot;homework/classes&quot;</span>, <span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">uco</span>.<span class="ruby-identifier">to_s</span>, <span class="ruby-ivar">@work</span>.<span class="ruby-identifier">id</span>.<span class="ruby-identifier">to_s</span>)
+        <span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">mkdir_p</span>(<span class="ruby-identifier">classes_path</span>)
+        <span class="ruby-identifier">work_file_path</span> = <span class="ruby-identifier">new_file_path</span>
+        <span class="ruby-identifier">test_file_path</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-constant">Rails</span>.<span class="ruby-identifier">root</span>, <span class="ruby-string">&quot;homework/src/tests&quot;</span>, <span class="ruby-ivar">@work</span>.<span class="ruby-identifier">task</span>.<span class="ruby-identifier">package</span>, <span class="ruby-ivar">@work</span>.<span class="ruby-identifier">task</span>.<span class="ruby-identifier">task_file_file_name</span>)
+        <span class="ruby-identifier">command_compile_src_and_test</span> = <span class="ruby-string">&quot;javac -d &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">classes_path</span> <span class="ruby-operator">+</span><span class="ruby-string">&quot; &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">work_file_path</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot; &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">test_file_path</span>
+        <span class="ruby-identifier">response_compile_src_and_test</span> = <span class="ruby-node">%x#{command_compile_src_and_test}`</span>
+
+        <span class="ruby-identifier">include_class_path</span> = <span class="ruby-string">&quot;-cp &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">classes_path</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;;&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-constant">Rails</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;/lib/assets/junit.jar;&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-constant">Rails</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;/lib/assets/hamcrest-core.jar &quot;</span>
+        <span class="ruby-identifier">command_run_test</span> = <span class="ruby-string">&quot;java &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">include_class_path</span>  <span class="ruby-operator">+</span> <span class="ruby-string">&quot;org.junit.runner.JUnitCore &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@work</span>.<span class="ruby-identifier">task</span>.<span class="ruby-identifier">package</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;.&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@work</span>.<span class="ruby-identifier">task</span>.<span class="ruby-identifier">task_file_file_name</span>[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">-6</span>]
+        <span class="ruby-identifier">response_run_test</span> = <span class="ruby-node">%x#{command_run_test}`</span>
+
+        <span class="ruby-ivar">@work</span>.<span class="ruby-identifier">message</span> = <span class="ruby-identifier">response_run_test</span>
+
+        <span class="ruby-keyword">if</span> <span class="ruby-ivar">@work</span>.<span class="ruby-identifier">message</span>.<span class="ruby-identifier">include?</span> <span class="ruby-string">&quot;FAILURES!&quot;</span>
+          <span class="ruby-ivar">@work</span>.<span class="ruby-identifier">status</span> = <span class="ruby-string">&quot;fail&quot;</span>
+        <span class="ruby-keyword">elsif</span> <span class="ruby-ivar">@work</span>.<span class="ruby-identifier">message</span>.<span class="ruby-identifier">include?</span> <span class="ruby-string">&quot;OK&quot;</span>
+          <span class="ruby-ivar">@work</span>.<span class="ruby-identifier">status</span> = <span class="ruby-string">&quot;success&quot;</span>  
+        <span class="ruby-keyword">end</span>
+
+        <span class="ruby-ivar">@work</span>.<span class="ruby-identifier">save</span>
+      <span class="ruby-keyword">elsif</span> <span class="ruby-ivar">@work</span>.<span class="ruby-identifier">task</span>.<span class="ruby-identifier">language</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;xslt&quot;</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@work</span>.<span class="ruby-identifier">task</span>.<span class="ruby-identifier">language</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;xquery&quot;</span>
+        <span class="ruby-identifier">new_file_path</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-constant">Rails</span>.<span class="ruby-identifier">root</span>, <span class="ruby-string">&quot;homework/src&quot;</span>, <span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">uco</span>.<span class="ruby-identifier">to_s</span>, <span class="ruby-ivar">@work</span>.<span class="ruby-identifier">id</span>.<span class="ruby-identifier">to_s</span>, <span class="ruby-ivar">@work</span>.<span class="ruby-identifier">task</span>.<span class="ruby-identifier">package</span>, <span class="ruby-ivar">@work</span>.<span class="ruby-identifier">homework_file_name</span>)
+        <span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">mkdir_p</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-identifier">new_file_path</span>))
+        <span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">cp</span> <span class="ruby-ivar">@work</span>.<span class="ruby-identifier">homework</span>.<span class="ruby-identifier">path</span>, <span class="ruby-identifier">new_file_path</span>
+
+        
+      <span class="ruby-keyword">end</span>    
+
+      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">redirect_to</span> <span class="ruby-ivar">@work</span>, <span class="ruby-identifier">notice</span><span class="ruby-operator">:</span> <span class="ruby-string">'Work was successfully created.'</span> }
+      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">json</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@work</span>, <span class="ruby-identifier">status</span><span class="ruby-operator">:</span> <span class="ruby-value">:created</span>, <span class="ruby-identifier">location</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@work</span> }
+      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">xml</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">xml</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@work</span>, <span class="ruby-identifier">status</span><span class="ruby-operator">:</span> <span class="ruby-value">:created</span>, <span class="ruby-identifier">location</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@work</span> }
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">action</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;new&quot;</span> }
+      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">xml</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">xml</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@work</span>.<span class="ruby-identifier">errors</span>, <span class="ruby-identifier">status</span><span class="ruby-operator">:</span> <span class="ruby-value">:unprocessable_entity</span> }
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- create-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- create-method -->
+
+    
+      <div id="method-i-destroy" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">destroy</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="destroy-source">
+            <pre><span class="ruby-comment"># File app/controllers/works_controller.rb, line 157</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">destroy</span>
+  <span class="ruby-ivar">@work</span> = <span class="ruby-constant">Work</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+  <span class="ruby-ivar">@work</span>.<span class="ruby-identifier">destroy</span>
+
+  <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">works_url</span> }
+    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">head</span> <span class="ruby-value">:no_content</span> }
+    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">xml</span> { <span class="ruby-identifier">head</span> <span class="ruby-value">:no_content</span> }
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- destroy-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- destroy-method -->
+
+    
+      <div id="method-i-edit" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">edit</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="edit-source">
+            <pre><span class="ruby-comment"># File app/controllers/works_controller.rb, line 85</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">edit</span>
+  <span class="ruby-ivar">@work</span> = <span class="ruby-constant">Work</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- edit-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- edit-method -->
+
+    
+      <div id="method-i-generated" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">generated</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="generated-source">
+            <pre><span class="ruby-comment"># File app/controllers/works_controller.rb, line 49</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">generated</span>
+  <span class="ruby-ivar">@work</span> = <span class="ruby-constant">Work</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:language</span>] <span class="ruby-operator">==</span> <span class="ruby-string">&quot;xslt&quot;</span>
+    <span class="ruby-identifier">xsl_file</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-constant">Rails</span>.<span class="ruby-identifier">root</span>, <span class="ruby-string">&quot;homework/src&quot;</span>, <span class="ruby-ivar">@work</span>.<span class="ruby-identifier">user</span>.<span class="ruby-identifier">uco</span>.<span class="ruby-identifier">to_s</span>, <span class="ruby-ivar">@work</span>.<span class="ruby-identifier">id</span>.<span class="ruby-identifier">to_s</span>, <span class="ruby-ivar">@work</span>.<span class="ruby-identifier">task</span>.<span class="ruby-identifier">package</span>, <span class="ruby-ivar">@work</span>.<span class="ruby-identifier">homework_file_name</span>)
+    <span class="ruby-identifier">xml_file</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-constant">Rails</span>.<span class="ruby-identifier">root</span>, <span class="ruby-string">&quot;homework/src/tests&quot;</span>, <span class="ruby-ivar">@work</span>.<span class="ruby-identifier">task</span>.<span class="ruby-identifier">package</span>, <span class="ruby-ivar">@work</span>.<span class="ruby-identifier">task</span>.<span class="ruby-identifier">task_file_file_name</span>)
+    <span class="ruby-identifier">doc</span> = <span class="ruby-constant">Nokogiri</span><span class="ruby-operator">::</span><span class="ruby-constant">XML</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span>(<span class="ruby-identifier">xml_file</span>))
+    <span class="ruby-identifier">xslt</span> = <span class="ruby-constant">Nokogiri</span><span class="ruby-operator">::</span><span class="ruby-constant">XSLT</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span>(<span class="ruby-identifier">xsl_file</span>))
+
+    <span class="ruby-identifier">transform</span> = <span class="ruby-identifier">xslt</span>.<span class="ruby-identifier">transform</span>(<span class="ruby-identifier">doc</span>)
+
+    <span class="ruby-identifier">render</span> <span class="ruby-value">:text</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">transform</span>
+  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:language</span>] <span class="ruby-operator">==</span> <span class="ruby-string">&quot;xquery&quot;</span>
+    <span class="ruby-identifier">xq_file</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-constant">Rails</span>.<span class="ruby-identifier">root</span>, <span class="ruby-string">&quot;homework/src&quot;</span>, <span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">uco</span>.<span class="ruby-identifier">to_s</span>, <span class="ruby-ivar">@work</span>.<span class="ruby-identifier">id</span>.<span class="ruby-identifier">to_s</span>, <span class="ruby-ivar">@work</span>.<span class="ruby-identifier">task</span>.<span class="ruby-identifier">package</span>, <span class="ruby-ivar">@work</span>.<span class="ruby-identifier">homework_file_name</span>)
+    <span class="ruby-identifier">command</span> = <span class="ruby-string">&quot;java -cp &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-constant">Rails</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;/lib/assets/saxon9he.jar net.sf.saxon.Query &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">xq_file</span>
+    <span class="ruby-identifier">response</span> = <span class="ruby-node">%x#{command}`</span>
+
+    <span class="ruby-identifier">render</span> <span class="ruby-value">:text</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">CodeRay</span>.<span class="ruby-identifier">scan</span>(<span class="ruby-identifier">response</span>, <span class="ruby-value">:xml</span>).<span class="ruby-identifier">div</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- generated-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- generated-method -->
+
+    
+      <div id="method-i-homework" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">homework</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="homework-source">
+            <pre><span class="ruby-comment"># File app/controllers/works_controller.rb, line 69</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">homework</span>
+  <span class="ruby-ivar">@work</span> = <span class="ruby-constant">Work</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+  <span class="ruby-identifier">file_name</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-constant">Rails</span>.<span class="ruby-identifier">root</span>, <span class="ruby-string">&quot;homework/src&quot;</span>, <span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">uco</span>.<span class="ruby-identifier">to_s</span>, <span class="ruby-ivar">@work</span>.<span class="ruby-identifier">id</span>.<span class="ruby-identifier">to_s</span>, <span class="ruby-ivar">@work</span>.<span class="ruby-identifier">task</span>.<span class="ruby-identifier">package</span>, <span class="ruby-ivar">@work</span>.<span class="ruby-identifier">homework_file_name</span>)
+  <span class="ruby-identifier">file</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">file_name</span>, <span class="ruby-string">&quot;r&quot;</span>)
+  <span class="ruby-identifier">data</span> = <span class="ruby-identifier">file</span>.<span class="ruby-identifier">read</span>
+  <span class="ruby-identifier">file</span>.<span class="ruby-identifier">close</span>
+
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@work</span>.<span class="ruby-identifier">task</span>.<span class="ruby-identifier">language</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;java&quot;</span>
+    <span class="ruby-identifier">render</span> <span class="ruby-identifier">text</span><span class="ruby-operator">:</span>  <span class="ruby-constant">CodeRay</span>.<span class="ruby-identifier">scan</span>(<span class="ruby-identifier">data</span>, <span class="ruby-value">:java</span>).<span class="ruby-identifier">div</span>
+  <span class="ruby-keyword">elsif</span> <span class="ruby-ivar">@work</span>.<span class="ruby-identifier">task</span>.<span class="ruby-identifier">language</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;xquery&quot;</span>
+    <span class="ruby-identifier">render</span> <span class="ruby-identifier">text</span><span class="ruby-operator">:</span>  <span class="ruby-constant">CodeRay</span>.<span class="ruby-identifier">scan</span>(<span class="ruby-identifier">data</span>, <span class="ruby-value">:php</span>).<span class="ruby-identifier">div</span>      
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">render</span> <span class="ruby-identifier">text</span><span class="ruby-operator">:</span>  <span class="ruby-constant">CodeRay</span>.<span class="ruby-identifier">scan</span>(<span class="ruby-identifier">data</span>, <span class="ruby-value">:xml</span>).<span class="ruby-identifier">div</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- homework-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- homework-method -->
+
+    
+      <div id="method-i-index" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">index</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="index-source">
+            <pre><span class="ruby-comment"># File app/controllers/works_controller.rb, line 29</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">index</span>
+  <span class="ruby-ivar">@works</span> = <span class="ruby-constant">Work</span>.<span class="ruby-identifier">all</span>
+
+  <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> <span class="ruby-comment"># index.html.erb</span>
+    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">json</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@works</span> }
+    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">xml</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">xml</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@works</span> }
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- index-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- index-method -->
+
+    
+      <div id="method-i-show" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">show</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="show-source">
+            <pre><span class="ruby-comment"># File app/controllers/works_controller.rb, line 39</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">show</span>
+  <span class="ruby-ivar">@work</span> = <span class="ruby-constant">Work</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+
+  <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> <span class="ruby-comment"># show.html.erb</span>
+    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">json</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@work</span> }
+    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">xml</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">xml</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@work</span> }
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- show-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- show-method -->
+
+    
+      <div id="method-i-update" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">update</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="update-source">
+            <pre><span class="ruby-comment"># File app/controllers/works_controller.rb, line 141</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">update</span>
+  <span class="ruby-ivar">@work</span> = <span class="ruby-constant">Work</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+
+  <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@work</span>.<span class="ruby-identifier">update_attributes</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:work</span>])
+      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">work_url</span>(<span class="ruby-ivar">@work</span>), <span class="ruby-identifier">notice</span><span class="ruby-operator">:</span> <span class="ruby-string">'Work was successfully updated.'</span> }
+      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">head</span> <span class="ruby-value">:no_content</span> }
+      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">xml</span> { <span class="ruby-identifier">head</span> <span class="ruby-value">:no_content</span> }
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">action</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;edit&quot;</span> }
+      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">json</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@work</span>.<span class="ruby-identifier">errors</span>, <span class="ruby-identifier">status</span><span class="ruby-operator">:</span> <span class="ruby-value">:unprocessable_entity</span> }
+      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">xml</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">xml</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@work</span>.<span class="ruby-identifier">errors</span>, <span class="ruby-identifier">status</span><span class="ruby-operator">:</span> <span class="ruby-value">:unprocessable_entity</span> }
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- update-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- update-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.2.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

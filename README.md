@@ -22,8 +22,6 @@ Your application is set to precompile the assets every time you push
 to OpenShift. Any assets you commit to your repo will be preserved
 alongside those which are generated during the build.
 
-By adding `disable_asset_compilation` marker, you will disable asset compilation upon application deployment.
-
 ### Security ###
 Since these quickstarts are shared code, we had to take special
 consideration to ensure that security related configuration variables
@@ -41,7 +39,7 @@ from `initialize_secret(:b)` but they will also be consistent, so any
 time your application uses them (even across reboots), you know they
 will be the same.
 
-### Development mode ###
+### Developmnent mode ###
 When you develop your Rails application in OpenShift, you can also enable the
 'development' environment by setting the `RAILS_ENV` environment variable,
 using the `rhc` client, like:

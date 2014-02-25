@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<books>
+    <book price="65.95">
+        <title>Advanced Programming in the Unix environment</title>
+        <source>expensive.store.com</source>
+    </book>
+    <book price="59.95">
+        <title>Advanced Programming in the Unix environment</title>
+        <source>cheapest.store.com</source>
+    </book>
+    <book price="65.95">
+        <title>TCP/IP Illustrated</title>
+        <source>expensive.store.com</source>
+    </book>
+    <book price="59.95">
+        <title>TCP/IP Illustrated</title>
+        <source>cheaper.store.com</source>
+    </book>
+    <book price="49.95">
+        <title>TCP/IP Illustrated</title>
+        <source>cheapest.store.com</source>
+    </book>
+    <book price="34.95">
+        <title>Data on the Web</title>
+        <source>cheapest.store.com</source>
+    </book>
+    <book price="39.95">
+        <title>Data on the Web</title>
+        <source>expensive.store.com</source>
+    </book>
+    <shop name="cheaper.store.com">
+        <sold title="TCP/IP Illustrated" amount="5"/>
+    </shop>
+    <shop name="expensive.store.com">
+        <sold title="Data on the Web" amount="3"/>
+        <sold title="TCP/IP Illustrated" amount="1"/>
+        <sold title="Advanced Programming in the Unix environment" amount="2"/>
+    </shop>
+</books>

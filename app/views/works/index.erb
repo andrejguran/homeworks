@@ -1,0 +1,30 @@
+<h1>Listing works</h1>
+
+<table>
+  <tr>
+    <th>Task name</th>
+    <th>created</th>
+    <th>filename</th>
+    <th>uco</th>
+    <th>status</th>
+    <% if admin? %>
+    <th></th>
+    <th></th>
+    <% end %>
+  </tr>
+
+<% @works.each do |work| %>
+  <tr>
+    <td><%= link_to work.task.name, work.task %></td>
+    <td><%= work.created_at %></td>
+    <td><%= link_to work.homework_file_name, work %></td>
+    <td><%= work.user.uco %></td>
+    <td><%= work.status %></td>
+    <% if admin? %>
+    <td><%= link_to 'Edit', edit_work_path(work) %></td>
+    <td><%= link_to 'Destroy', work, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% end %>
+  </tr>
+<% end %>
+</table>
+<%= link_to 'Back', tasks_path %>

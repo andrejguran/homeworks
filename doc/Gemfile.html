@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<title>Gemfile - RDoc Documentation</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body class="file">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  
+
+  <div id="project-metadata">
+     
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./ActiveRecord.html">ActiveRecord</a>
+  
+    <li><a href="./ActiveSupport.html">ActiveSupport</a>
+  
+    <li><a href="./ActiveSupport/TestCase.html">ActiveSupport::TestCase</a>
+  
+    <li><a href="./AddAdminUcoToUser.html">AddAdminUcoToUser</a>
+  
+    <li><a href="./AddFileColumntToWorks.html">AddFileColumntToWorks</a>
+  
+    <li><a href="./AddFileToTasks.html">AddFileToTasks</a>
+  
+    <li><a href="./AddMessageToWork.html">AddMessageToWork</a>
+  
+    <li><a href="./AddStatusToWork.html">AddStatusToWork</a>
+  
+    <li><a href="./AddUserToTask.html">AddUserToTask</a>
+  
+    <li><a href="./AddUserToWork.html">AddUserToWork</a>
+  
+    <li><a href="./ApplicationController.html">ApplicationController</a>
+  
+    <li><a href="./ApplicationHelper.html">ApplicationHelper</a>
+  
+    <li><a href="./BrowsingTest.html">BrowsingTest</a>
+  
+    <li><a href="./CreateTasks.html">CreateTasks</a>
+  
+    <li><a href="./CreateWorks.html">CreateWorks</a>
+  
+    <li><a href="./DeviseCreateUsers.html">DeviseCreateUsers</a>
+  
+    <li><a href="./HomeControllerTest.html">HomeControllerTest</a>
+  
+    <li><a href="./HomeHelperTest.html">HomeHelperTest</a>
+  
+    <li><a href="./Object.html">Object</a>
+  
+    <li><a href="./RemoveNameFromWork.html">RemoveNameFromWork</a>
+  
+    <li><a href="./Task.html">Task</a>
+  
+    <li><a href="./TaskTest.html">TaskTest</a>
+  
+    <li><a href="./TasksController.html">TasksController</a>
+  
+    <li><a href="./TasksControllerTest.html">TasksControllerTest</a>
+  
+    <li><a href="./TasksHelper.html">TasksHelper</a>
+  
+    <li><a href="./TasksHelperTest.html">TasksHelperTest</a>
+  
+    <li><a href="./User.html">User</a>
+  
+    <li><a href="./UserTest.html">UserTest</a>
+  
+    <li><a href="./Web.html">Web</a>
+  
+    <li><a href="./Web/Application.html">Web::Application</a>
+  
+    <li><a href="./Work.html">Work</a>
+  
+    <li><a href="./WorkTest.html">WorkTest</a>
+  
+    <li><a href="./WorksController.html">WorksController</a>
+  
+    <li><a href="./WorksControllerTest.html">WorksControllerTest</a>
+  
+    <li><a href="./WorksHelper.html">WorksHelper</a>
+  
+    <li><a href="./WorksHelperTest.html">WorksHelperTest</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation" class="description">
+  
+<p>source ‚Ä?<a href="https://rubygems.org">rubygems.org</a>‚Äô</p>
+
+<p>gem ‚Ä?rails‚Äô, ‚Ä?3.2.13‚Äô</p>
+
+<p># Bundle edge Rails instead: # gem ‚Ä?rails‚Äô, :git =&gt;
+‚Ä?git://github.com/rails/rails.git‚Äô</p>
+
+<p>group :production do</p>
+
+<pre>gem 'pg'</pre>
+
+<p>end group :development, :test do</p>
+
+<pre>gem 'sqlite3'</pre>
+
+<p>end</p>
+
+<p># Gems used only for assets and not required # in production environments
+by default. group :assets do</p>
+
+<pre class="ruby"><span class="ruby-identifier">gem</span> <span class="ruby-string">'sass-rails'</span>,   <span class="ruby-string">'~&gt; 3.2.3'</span>
+<span class="ruby-identifier">gem</span> <span class="ruby-string">'coffee-rails'</span>, <span class="ruby-string">'~&gt; 3.2.1'</span>
+
+<span class="ruby-comment"># See https://github.com/sstephenson/execjs#readme for more supported runtimes</span>
+<span class="ruby-comment"># gem 'therubyracer', :platforms =&gt; :ruby</span>
+
+<span class="ruby-identifier">gem</span> <span class="ruby-string">'uglifier'</span>, <span class="ruby-string">'&gt;= 1.0.3'</span>
+
+<span class="ruby-identifier">gem</span> <span class="ruby-string">'twitter-bootstrap-rails'</span>, :<span class="ruby-identifier">git</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;git://github.com/seyhunak/twitter-bootstrap-rails.git&quot;</span>, :<span class="ruby-identifier">branch</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;static&quot;</span>
+</pre>
+
+<p>end</p>
+
+<p>gem ‚Ä?jquery-rails‚Äô</p>
+
+<p>gem ‚Äúpaperclip‚Äù, ‚Äú~&gt; 3.0‚Äù</p>
+
+<p>gem ‚Ä?devise‚Äô</p>
+
+<p>gem ‚Ä?nokogiri‚Äô</p>
+
+<p>gem ‚Ä?coderay‚Äô</p>
+
+<p># To use ActiveModel has_secure_password # gem ‚Ä?bcrypt-ruby‚Äô, ‚Ä?~&gt; 3.0.0‚Äô</p>
+
+<p># To use Jbuilder templates for JSON # gem ‚Ä?jbuilder‚Äô</p>
+
+<p># Use unicorn as the app server # gem ‚Ä?unicorn‚Äô</p>
+
+<p># Deploy with Capistrano # gem ‚Ä?capistrano‚Äô</p>
+
+<p># To use debugger # gem ‚Ä?debugger‚Äô</p>
+
+</div>
+
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 4.0.1.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

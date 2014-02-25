@@ -1,0 +1,11 @@
+Thu, 06 Jun 2013 12:49:59 +0200
+doc/README_FOR_APP	Wed, 22 May 2013 17:58:55 +0200
+app/controllers/application_controller.rb	Wed, 22 May 2013 17:58:53 +0200
+app/controllers/tasks_controller.rb	Thu, 06 Jun 2013 12:49:28 +0200
+app/controllers/works_controller.rb	Thu, 06 Jun 2013 12:30:46 +0200
+app/helpers/application_helper.rb	Sun, 26 May 2013 22:16:51 +0200
+app/helpers/tasks_helper.rb	Wed, 22 May 2013 18:48:11 +0200
+app/helpers/works_helper.rb	Sat, 25 May 2013 16:53:41 +0200
+app/models/task.rb	Tue, 04 Jun 2013 02:32:09 +0200
+app/models/user.rb	Sun, 26 May 2013 21:25:09 +0200
+app/models/work.rb	Wed, 05 Jun 2013 20:57:35 +0200

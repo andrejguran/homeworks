@@ -1,0 +1,40 @@
+<%- model_class = Work.new.class -%>
+<h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Task name</th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%= model_class.human_attribute_name(:homework_file_name) %></th>
+      <th><%= model_class.human_attribute_name(:user_id) %></th>
+      <th><%= model_class.human_attribute_name(:status) %></th>
+      <% if admin? %>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <% @works.each do |work| %>
+    <% if work.id %>
+      <tr>
+        <td><%= link_to work.task.name, task_path(work.task) %></td>
+        <td><%= time_ago_in_words work.created_at %> ago</td>
+        <td><%= link_to work.homework_file_name, work_path(work) %></td>
+        <td><%= work.user.uco %></td>
+        <td><%= work.status %></td>
+        <% if admin? %>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_work_path(work), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      work_path(work),
+                      :method => :delete,
+                      :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')),
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+        <% end %>
+      </tr>
+    <% end %>
+    <% end %>
+  </tbody>
+</table>

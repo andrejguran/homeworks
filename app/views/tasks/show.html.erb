@@ -1,0 +1,90 @@
+<%- model_class = @task.class -%>
+<h1><%=t '.title', :default => model_class.model_name.human %></h1>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
+  <dd><%= @task.name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
+  <dd><%= @task.description %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:language) %>:</strong></dt>
+  <dd><%= @task.language %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:user_id) %>:</strong></dt>
+  <dd><%= @task.user.uco %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:package) %>:</strong></dt>
+  <dd><%= @task.package %></dd>
+  
+  <dt><strong><%= model_class.human_attribute_name(:created_at) %>:</strong></dt>
+  <dd><%= time_ago_in_words @task.created_at %> ago</dd>
+</dl>
+
+<% if user_signed_in? %>
+  <h2>Add a work:</h2>
+  <%= form_for([@task, @task.works.build]) do |f| %>
+    <%= f.file_field :homework %>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  <% end %>
+
+
+  
+
+
+<h2>Works</h2>
+<%- model_class = Work.new.class -%>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%= model_class.human_attribute_name(:homework_file_name) %></th>
+      <th><%= model_class.human_attribute_name(:user_id) %></th>
+      <th><%= model_class.human_attribute_name(:status) %></th>
+      <% if admin? %>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <% @task.works.each do |work| %>
+      <% if work.id %>
+        <% if (work.user == current_user || admin?) %>
+          <tr>
+            <td><%= time_ago_in_words work.created_at %> ago</td>
+            <td><%= link_to work.homework_file_name, work_path(work) %></td>
+            <td><%= work.user.uco %></td>
+            <td class="<%= work.status %>"><%= work.status %></td>
+            <% if admin? %>
+            <td>
+              <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                          edit_work_path(work), :class => 'btn btn-mini' %>
+              <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                          work_path(work),
+                          :method => :delete,
+                          :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')),
+                          :class => 'btn btn-mini btn-danger' %>
+            </td>
+            <% end %>
+          </tr>
+        <% end %>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+<% end %>
+
+
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              tasks_path, :class => 'btn'  %>
+<% if admin? %>
+  <%= link_to t('.back', :default => t("All works")),
+              works_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_task_path(@task), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              task_path(@task),
+              :method => 'delete',
+              :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')),
+              :class => 'btn btn-danger' %>
+<% end %>
+</div>

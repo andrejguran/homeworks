@@ -1,0 +1,34 @@
+<p>
+  <b>Task name:</b>
+  <%= link_to @work.task.name, @work.task %>
+</p>
+
+<p>
+  <b>Created:</b>
+  <%= @work.created_at %>
+</p>
+
+<p>
+  <b>File name:</b>
+  <%= link_to @work.homework_file_name, :controller => "works", :action => "homework", :id => @work %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @work.status %>
+</p>
+
+<p>
+    <b>Message:</b>
+    <%= @work.message %>
+</p>
+
+  <p>
+    <%= link_to "Generated output", :controller => "works", :action => "generated", :language => @work.task.language, :id => @work %>
+  </p>
+
+
+<% if admin? %>
+  <%= link_to 'Edit', edit_work_path(@work) %> |
+<% end %>
+<%= link_to 'Back', works_path %>

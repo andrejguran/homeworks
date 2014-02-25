@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalogue>
+                   
+<!-- 
+    Task 3. XSLT Transformation
+    Deadline: after Easter (after Apr 1)
+    
+    Write products-to-html.xsl stylesheet producing a XHTML 1.0 STRICT
+    output (i.e. DOCTYPE PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" document)
+    from this source file products.xml.
+    
+    Alternatively, you can make an HTML 5 output with the same content.
+    Use the XSLT 1.0 version. 
+
+    As the XSLT transformations under NetBeans are not always 100% reliable,
+    use the following from command line (Linux, Mac OS X):
+    
+    xsltproc products-to-html.xsl products.xml > products.xhtml
+    
+
+    Requirements for the transformation:
+    
+    1. Expected output is shown in products.xhtml
+    2. When a producer does not have an id, nothing at all is produced for it.
+    3. If there is no product, the "No products" is produced.
+    4. If there are some products, but the products element has visible="false"
+       then "Some products but not visible".
+    5. if the products as a whole are visible (products element has visible="true")
+       then for each product marked as visible='false', display "An invisible product" 
+    6. Otherwise, for each visible products, dispalz a link to this product in list below
+    7. Make the list of product names and descriptions below (with anchors to it)
+    8. It is not necessary to keep the exact visual look. However, there must be 
+       some visual styling (by CSS).
+    
+    Notes: please consult the first few lines in product.xhtml 
+    to see the important things the XHTML 1.0 Strict file must have:
+    XML prolog, XHTML as default XML namespace,
+    the correct DOCTYPE, but also 
+    
+    <meta http-equiv="Content-Style-Type" content="text/css" /> if you use CSS styles
+    
+    Many of these properties can be achieved by having the XSLT file starting 
+    with something like this:
+    
+    <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0"
+                xmlns="http://www.w3.org/1999/xhtml">
+    
+    <xsl:output method="xml"
+    doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN"
+    doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"
+    encoding="UTF-8"
+    indent="yes"
+    />
+    
+    -->
+                   
+    <producer id="first">
+        <name>First Bakery, Ltd.</name>
+        <description>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+        Nullam id dui lacinia est fringilla posuere. 
+        Vivamus vulputate tincidunt tortor, eu mattis nibh volutpat et. 
+        Integer pulvinar, diam sed fermentum vestibulum, risus sapien 
+        iaculis diam, at adipiscing sapien eros pulvinar nunc. 
+        Morbi ac nibh pellentesque tortor interdum facilisis id ut dolor. 
+        In hac habitasse platea dictumst. Cras sed tortor at nisi sagittis iaculis. 
+        Quisque nulla nisi, dictum quis venenatis a, fermentum vulputate sapien. 
+        Etiam pretium facilisis risus, eu ultricies elit dignissim vel.
+            Proin feugiat, elit ut auctor lacinia, eros tortor congue turpis, 
+            sed malesuada metus nisl vitae nunc. Donec a neque id libero euismod dapibus. 
+            Sed consequat tortor a arcu lacinia ultrices. 
+            Nulla ipsum ipsum, mattis nec dignissim sagittis, varius in velit. 
+            Pellentesque gravida eros ultricies velit lacinia id pretium libero faucibus. 
+            Proin nibh mi, consequat sed tempor ac, porta in mauris. 
+            Duis eget ante et sem feugiat porta. In hac habitasse platea dictumst. 
+            Aliquam eu tellus ut massa feugiat venenatis nec eu arcu. 
+            Nulla non ligula mauris. Quisque nec dolor sit amet massa sodales 
+            vehicula at eget justo. Fusce egestas ligula turpis.
+        </description>
+        <products visible="false">
+            <produces ref="bread500"/>
+        </products>
+    </producer>
+
+    <producer id="second">
+        <name>Second New Bakery, Inc.</name>
+        <description>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+        Nullam id dui lacinia est fringilla posuere. 
+        Vivamus vulputate tincidunt tortor, eu mattis nibh volutpat et. 
+        Integer pulvinar, diam sed fermentum vestibulum, risus sapien 
+        iaculis diam, at adipiscing sapien eros pulvinar nunc. 
+        Morbi ac nibh pellentesque tortor interdum facilisis id ut dolor. 
+        In hac habitasse platea dictumst. Cras sed tortor at nisi sagittis iaculis. 
+        Quisque nulla nisi, dictum quis venenatis a, fermentum vulputate sapien. 
+        Etiam pretium facilisis risus, eu ultricies elit dignissim vel.
+            Proin feugiat, elit ut auctor lacinia, eros tortor congue turpis, 
+            sed malesuada metus nisl vitae nunc. Donec a neque id libero euismod dapibus. 
+            Sed consequat tortor a arcu lacinia ultrices. 
+            Nulla ipsum ipsum, mattis nec dignissim sagittis, varius in velit. 
+            Pellentesque gravida eros ultricies velit lacinia id pretium libero faucibus. 
+            Proin nibh mi, consequat sed tempor ac, porta in mauris. 
+            Duis eget ante et sem feugiat porta. In hac habitasse platea dictumst. 
+            Aliquam eu tellus ut massa feugiat venenatis nec eu arcu. 
+            Nulla non ligula mauris. Quisque nec dolor sit amet massa sodales 
+            vehicula at eget justo. Fusce egestas ligula turpis.
+        </description>
+        <products visible="true">
+        </products>
+    </producer>
+
+    <producer id="third">
+        <name>Third Excellent Bakery, Inc.</name>
+        <products visible="true">
+            <produces ref="bread500"/>
+            <produces ref="grain450" visible="false"/>
+        </products>
+    </producer>
+
+    <producer id="fourth">
+        <name>Fourth: TwoProductsInvisible+TwoVisible</name>
+        <products visible="true">
+            <produces ref="bread500" visible="false"/>
+            <produces ref="grain450" visible="false"/>
+            <produces ref="bread1000"/>
+            <produces ref="grain1450"/>
+        </products>
+    </producer>
+
+    <producer>
+        <name>Fifth: NoidNoproducts</name>
+        <e-mail>noproducts@nowhere.com</e-mail>
+          <description>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+        Nullam id dui lacinia est fringilla posuere. 
+        Vivamus vulputate tincidunt tortor, eu mattis nibh volutpat et. 
+        Integer pulvinar, diam sed fermentum vestibulum, risus sapien 
+        iaculis diam, at adipiscing sapien eros pulvinar nunc. 
+        Morbi ac nibh pellentesque tortor interdum facilisis id ut dolor. 
+        In hac habitasse platea dictumst. Cras sed tortor at nisi sagittis iaculis. 
+        Quisque nulla nisi, dictum quis venenatis a, fermentum vulputate sapien. 
+        Etiam pretium facilisis risus, eu ultricies elit dignissim vel.
+            Proin feugiat, elit ut auctor lacinia, eros tortor congue turpis, 
+            sed malesuada metus nisl vitae nunc. Donec a neque id libero euismod dapibus. 
+            Sed consequat tortor a arcu lacinia ultrices. 
+            Nulla ipsum ipsum, mattis nec dignissim sagittis, varius in velit. 
+            Pellentesque gravida eros ultricies velit lacinia id pretium libero faucibus. 
+            Proin nibh mi, consequat sed tempor ac, porta in mauris. 
+            Duis eget ante et sem feugiat porta. In hac habitasse platea dictumst. 
+            Aliquam eu tellus ut massa feugiat venenatis nec eu arcu. 
+            Nulla non ligula mauris. Quisque nec dolor sit amet massa sodales 
+            vehicula at eget justo. Fusce egestas ligula turpis.
+        </description>
+      <products visible="false">
+        </products>
+    </producer>
+
+    <producer id="sixth">
+        <name>Sixth: productsVisible</name>
+        <products visible="true">
+            <produces ref="bread500"/>
+            <produces ref="grain450"/>
+        </products>
+    </producer>
+
+    <producer id="seventh">
+        <name>Seventh: productsButInvisible</name>
+        <description>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+        Nullam id dui lacinia est fringilla posuere. 
+        Vivamus vulputate tincidunt tortor, eu mattis nibh volutpat et. 
+        Integer pulvinar, diam sed fermentum vestibulum, risus sapien 
+        iaculis diam, at adipiscing sapien eros pulvinar nunc. 
+        Morbi ac nibh pellentesque tortor interdum facilisis id ut dolor. 
+        In hac habitasse platea dictumst. Cras sed tortor at nisi sagittis iaculis. 
+        Quisque nulla nisi, dictum quis venenatis a, fermentum vulputate sapien. 
+        Etiam pretium facilisis risus, eu ultricies elit dignissim vel.
+            Proin feugiat, elit ut auctor lacinia, eros tortor congue turpis, 
+            sed malesuada metus nisl vitae nunc. Donec a neque id libero euismod dapibus. 
+            Sed consequat tortor a arcu lacinia ultrices. 
+            Nulla ipsum ipsum, mattis nec dignissim sagittis, varius in velit. 
+            Pellentesque gravida eros ultricies velit lacinia id pretium libero faucibus. 
+            Proin nibh mi, consequat sed tempor ac, porta in mauris. 
+            Duis eget ante et sem feugiat porta. In hac habitasse platea dictumst. 
+            Aliquam eu tellus ut massa feugiat venenatis nec eu arcu. 
+            Nulla non ligula mauris. Quisque nec dolor sit amet massa sodales 
+            vehicula at eget justo. Fusce egestas ligula turpis.
+        </description>
+        <products visible="false">
+            <produces ref="bread500"/>
+            <produces ref="grain450"/>
+        </products>
+    </producer>
+
+    <product id="bread500">
+        <name>White bread 500 g</name>
+        <description>Very tasty less healthy white bread.
+        Vestibulum ante ipsum primis in faucibus orci luctus et ultrices 
+        posuere cubilia Curae; Suspendisse non massa aliquam orci gravida 
+        facilisis at quis justo. Nulla molestie, tortor sit amet mattis accumsan, 
+        magna nibh tincidunt purus, vel fermentum elit eros quis nunc. 
+        In massa orci, semper lacinia malesuada a, ullamcorper id massa. 
+        Ut rutrum tempus velit ut ultricies. In ut urna nibh. 
+        Aenean condimentum erat quis ipsum fermentum lobortis. 
+        Maecenas a sem nec tortor condimentum euismod. 
+        Quisque mattis sagittis ipsum, vitae mollis dolor gravida a. 
+        Ut congue malesuada odio luctus hendrerit. Sed ipsum purus, 
+        viverra a sollicitudin nec, tristique at risus. Quisque tincidunt 
+        pellentesque nunc, sed rhoncus nisi pharetra vitae. In vel purus enim.
+        </description>
+    </product>
+
+    <product id="grain450">
+        <name>Whole-grain bread 450 g</name>
+        <description>Very healthy less tasty dark bread.
+        Vestibulum ante ipsum primis in faucibus orci luctus et ultrices 
+        posuere cubilia Curae; Suspendisse non massa aliquam orci gravida 
+        facilisis at quis justo. Nulla molestie, tortor sit amet mattis accumsan, 
+        magna nibh tincidunt purus, vel fermentum elit eros quis nunc. 
+        In massa orci, semper lacinia malesuada a, ullamcorper id massa. 
+        Ut rutrum tempus velit ut ultricies. In ut urna nibh. 
+        Aenean condimentum erat quis ipsum fermentum lobortis. 
+        Maecenas a sem nec tortor condimentum euismod. 
+        Quisque mattis sagittis ipsum, vitae mollis dolor gravida a. 
+        Ut congue malesuada odio luctus hendrerit. Sed ipsum purus, 
+        viverra a sollicitudin nec, tristique at risus. Quisque tincidunt 
+        pellentesque nunc, sed rhoncus nisi pharetra vitae. In vel purus enim.
+        </description>
+    </product>
+
+    <product id="bread1000">
+        <name>White bread 1000 g</name>
+        <description>Very tasty less healthy white bread big one.
+        Vestibulum ante ipsum primis in faucibus orci luctus et ultrices 
+        posuere cubilia Curae; Suspendisse non massa aliquam orci gravida 
+        facilisis at quis justo. Nulla molestie, tortor sit amet mattis accumsan, 
+        magna nibh tincidunt purus, vel fermentum elit eros quis nunc. 
+        In massa orci, semper lacinia malesuada a, ullamcorper id massa. 
+        Ut rutrum tempus velit ut ultricies. In ut urna nibh. 
+        Aenean condimentum erat quis ipsum fermentum lobortis. 
+        Maecenas a sem nec tortor condimentum euismod. 
+        Quisque mattis sagittis ipsum, vitae mollis dolor gravida a. 
+        Ut congue malesuada odio luctus hendrerit. Sed ipsum purus, 
+        viverra a sollicitudin nec, tristique at risus. Quisque tincidunt 
+        pellentesque nunc, sed rhoncus nisi pharetra vitae. In vel purus enim.
+        </description>
+    </product>
+
+    <product id="grain1450">
+        <name>Whole-grain bread 1450 g</name>
+        <description>Very healthy less tasty dark bread bigger than ever.
+        Vestibulum ante ipsum primis in faucibus orci luctus et ultrices 
+        posuere cubilia Curae; Suspendisse non massa aliquam orci gravida 
+        facilisis at quis justo. Nulla molestie, tortor sit amet mattis accumsan, 
+        magna nibh tincidunt purus, vel fermentum elit eros quis nunc. 
+        In massa orci, semper lacinia malesuada a, ullamcorper id massa. 
+        Ut rutrum tempus velit ut ultricies. In ut urna nibh. 
+        Aenean condimentum erat quis ipsum fermentum lobortis. 
+        Maecenas a sem nec tortor condimentum euismod. 
+        Quisque mattis sagittis ipsum, vitae mollis dolor gravida a. 
+        Ut congue malesuada odio luctus hendrerit. Sed ipsum purus, 
+        viverra a sollicitudin nec, tristique at risus. Quisque tincidunt 
+        pellentesque nunc, sed rhoncus nisi pharetra vitae. In vel purus enim.
+        </description>
+    </product>
+
+</catalogue>
