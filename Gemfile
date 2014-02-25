@@ -29,8 +29,6 @@ group :assets do
   gem 'twitter-bootstrap-rails', :git => "git://github.com/seyhunak/twitter-bootstrap-rails.git", :branch => "static"
 end
 
-gem "browser"
-
 gem 'jquery-rails'
 
 gem "paperclip", "~> 3.0"
