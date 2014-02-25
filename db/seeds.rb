@@ -6,6 +6,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+include ApplicationHelper
+
 require "fileutils"
 
 u = User.new
@@ -26,7 +28,7 @@ t.user_id = u.id
 t.task_file = File.open('examples/tests/CalculatorTest.java')
 t.save
 
-new_file_path = File.join(ENV['OPENSHIFT_DATA_DIR'] ||= Rails.root, "homework/src/tests", t.package, t.task_file_file_name)
+new_file_path = File.join(upload_dir, "homework/src/tests", t.package, t.task_file_file_name)
 FileUtils.mkdir_p(File.dirname(new_file_path))
 FileUtils.cp t.task_file.path, new_file_path
 
@@ -39,7 +41,7 @@ t.user_id = u.id
 t.task_file = File.open('examples/tests/GeometryTest.java')
 t.save
 
-new_file_path = File.join(ENV['OPENSHIFT_DATA_DIR'] ||= Rails.root, "homework/src/tests", t.package, t.task_file_file_name)
+new_file_path = File.join(upload_dir, "homework/src/tests", t.package, t.task_file_file_name)
 FileUtils.mkdir_p(File.dirname(new_file_path))
 FileUtils.cp t.task_file.path, new_file_path
 
@@ -52,7 +54,7 @@ t.user_id = u.id
 t.task_file = File.open('examples/tests/products.xml')
 t.save
 
-new_file_path = File.join(ENV['OPENSHIFT_DATA_DIR'] ||= Rails.root, "homework/src/tests", t.package, t.task_file_file_name)
+new_file_path = File.join(upload_dir, "homework/src/tests", t.package, t.task_file_file_name)
 FileUtils.mkdir_p(File.dirname(new_file_path))
 FileUtils.cp t.task_file.path, new_file_path
 
@@ -65,6 +67,6 @@ t.user_id = u.id
 t.task_file = File.open('examples/tests/books.xml')
 t.save
 
-new_file_path = File.join(ENV['OPENSHIFT_DATA_DIR'] ||= Rails.root, "homework/src/tests", t.package, t.task_file_file_name)
+new_file_path = File.join(upload_dir, "homework/src/tests", t.package, t.task_file_file_name)
 FileUtils.mkdir_p(File.dirname(new_file_path))
 FileUtils.cp t.task_file.path, new_file_path
