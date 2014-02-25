@@ -13,7 +13,7 @@ module ApplicationHelper
   end
 
   def separator
-    if browser.windows?
+    if RUBY_PLATFORM.include? "windows"
         ";"
     else
         ":"
