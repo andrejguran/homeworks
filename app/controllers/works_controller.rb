@@ -64,7 +64,7 @@ class WorksController < ApplicationController
     @work = Work.find(params[:id])
     if params[:language] == "xslt"
       xsl_file = File.join(upload_dir, "homework/src", @work.user.uco.to_s, @work.id.to_s, @work.task.package, @work.homework_file_name)
-      xml_file = File.join(upload_dir, "homework/src/tests", @work.task.package, @work.task.task_file_file_name)
+      xml_file = File.join(upload_dir, "homework/src/tests", @work.task.id.to_s, @work.task.package, @work.task.task_file_file_name)
       doc = Nokogiri::XML(File.read(xml_file))
       xslt = Nokogiri::XSLT(File.read(xsl_file))
 
@@ -155,7 +155,7 @@ class WorksController < ApplicationController
           FileUtils.mkdir_p(classes_path)
           junit_path = File.join(Rails.root, "lib/assets/junit.jar")
           work_file_path = new_file_path
-          test_file_path = File.join(upload_dir, "homework/src/tests", @work.task.package, @work.task.task_file_file_name)
+          test_file_path = File.join(upload_dir, "homework/src/tests", @work.task.id.to_s, @work.task.package, @work.task.task_file_file_name)
           command_compile_src_and_test = "javac -cp " + junit_path + " -d " + classes_path +" " + work_file_path + " " + test_file_path
           response_compile_src_and_test = `#{command_compile_src_and_test}`
           include_class_path = "-cp " + classes_path + separator + Rails.root.to_s + "/lib/assets/junit.jar" + separator + Rails.root.to_s + "/lib/assets/hamcrest-core.jar "

@@ -61,9 +61,18 @@ class TasksController < ApplicationController
     respond_to do |format|
       if @task.save
         require "fileutils"
-        new_file_path = File.join(upload_dir, "homework/src/tests", @task.package, @task.task_file_file_name)
+        new_folder_path = File.join(upload_dir, "homework/src/tests", @task.id.to_s, @task.package)
+        new_file_path = File.join(new_folder_path, @task.task_file_file_name)
         FileUtils.mkdir_p(File.dirname(new_file_path))
         FileUtils.cp @task.task_file.path, new_file_path
+
+        if ".zip" == File.extname(@task.task_file_file_name) 
+          Zip::File.open(new_file_path) do |zip_file|
+            zip_file.each do |entry|
+              entry.extract( File.join(new_folder_path, entry.to_s) )
+            end
+          end
+        end
 
         format.html { redirect_to @task, notice: 'Task was successfully created.' }
         format.json { render json: @task, status: :created, location: @task }

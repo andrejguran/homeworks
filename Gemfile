@@ -41,6 +41,8 @@ gem 'coderay'
 
 gem "diffy", "~> 2.1.0"
 
+gem 'zip-zip'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

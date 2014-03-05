@@ -16,3 +16,5 @@
 
 /homeworks/*
 /public/system/*
+homework/
+.vagrant/

@@ -24,11 +24,11 @@ t.name = 'Calculator'
 t.description = 'create a calculator'
 t.language = 'java'
 t.package = 'calculator'
-t.user_id = u.id
+t.user = u
 t.task_file = File.open('examples/tests/CalculatorTest.java')
 t.save
 
-new_file_path = File.join(upload_dir, "homework/src/tests", t.package, t.task_file_file_name)
+new_file_path = File.join(upload_dir, "homework/src/tests", t.id, t.package)
 FileUtils.mkdir_p(File.dirname(new_file_path))
 FileUtils.cp t.task_file.path, new_file_path
 
@@ -37,11 +37,11 @@ t.name = 'Geometry'
 t.description = 'create a geometry class'
 t.language = 'java'
 t.package = 'geometry'
-t.user_id = u.id
+t.user = u
 t.task_file = File.open('examples/tests/GeometryTest.java')
 t.save
 
-new_file_path = File.join(upload_dir, "homework/src/tests", t.package, t.task_file_file_name)
+new_file_path = File.join(upload_dir, "homework/src/tests", t.id, t.package)
 FileUtils.mkdir_p(File.dirname(new_file_path))
 FileUtils.cp t.task_file.path, new_file_path
 
@@ -50,11 +50,11 @@ t.name = 'Products'
 t.description = 'Create xslt, that transforms xml into html page. Homework will be manualy checked by teacher'
 t.language = 'xslt'
 t.package = 'products'
-t.user_id = u.id
+t.user = u
 t.task_file = File.open('examples/tests/products.xml')
 t.save
 
-new_file_path = File.join(upload_dir, "homework/src/tests", t.package, t.task_file_file_name)
+new_file_path = File.join(upload_dir, "homework/src/tests", t.id, t.package)
 FileUtils.mkdir_p(File.dirname(new_file_path))
 FileUtils.cp t.task_file.path, new_file_path
 
@@ -63,10 +63,10 @@ t.name = 'Books'
 t.description = 'Create xquery, that transforms xml. Homework will be manualy checked by teacher'
 t.language = 'xquery'
 t.package = 'books'
-t.user_id = u.id
+t.user = u
 t.task_file = File.open('examples/tests/books.xml')
 t.save
 
-new_file_path = File.join(upload_dir, "homework/src/tests", t.package, t.task_file_file_name)
+new_file_path = File.join(upload_dir, "homework/src/tests", t.id, t.package)
 FileUtils.mkdir_p(File.dirname(new_file_path))
 FileUtils.cp t.task_file.path, new_file_path
