@@ -90,6 +90,8 @@ class WorksController < ApplicationController
       include_class_path = "-cp " + classes_path + separator + Rails.root.to_s + "/lib/assets/junit.jar" + separator + Rails.root.to_s + "/lib/assets/hamcrest-core.jar "
       command_run_test = "java " + include_class_path  + "org.junit.runner.JUnitCore " + @work.task.package + "." + File.basename(@work.task.task_file_file_name, ".*")
 
+      ##return render text: command_run_test
+
       response_run_test = `#{command_run_test}`
 
       render :text => CodeRay.scan(response_run_test, :java).div
@@ -139,7 +141,8 @@ class WorksController < ApplicationController
         if @work.task.language == "java"
           require "fileutils"
 
-          new_file_path = File.join(upload_dir, "homework/src", current_user.uco.to_s, @work.id.to_s, @work.task.package.tr(".", "/"), @work.homework_file_name)
+          new_file_dir = File.join(upload_dir, "homework/src", current_user.uco.to_s, @work.id.to_s, @work.task.package.tr(".", "/"))
+          new_file_path = File.join(new_file_dir, @work.homework_file_name)
           FileUtils.mkdir_p(File.dirname(new_file_path))
           FileUtils.cp @work.homework.path, new_file_path
 
@@ -153,11 +156,16 @@ class WorksController < ApplicationController
 
           classes_path = File.join(upload_dir, "homework/classes", current_user.uco.to_s, @work.id.to_s)
           FileUtils.mkdir_p(classes_path)
+
           junit_path = File.join(Rails.root, "lib/assets/junit.jar")
           work_file_path = new_file_path
           test_file_path = File.join(upload_dir, "homework/src/tests", @work.task.id.to_s, @work.task.package.tr(".", "/"), File.basename(@work.task.task_file_file_name, ".*")) + ".java"
           command_compile_src_and_test = "javac -cp " + junit_path + " -d " + classes_path +" " + work_file_path + " " + test_file_path
           response_compile_src_and_test = `#{command_compile_src_and_test}`
+
+          test_files = File.join(upload_dir, "homework/src/tests", @work.task.id.to_s, @work.task.package.tr(".", "/")) + "/*"
+          FileUtils.cp_r Dir.glob(test_files), File.join(classes_path, @work.task.package.tr(".", "/"))
+
           include_class_path = "-cp " + classes_path + separator + Rails.root.to_s + "/lib/assets/junit.jar" + separator + Rails.root.to_s + "/lib/assets/hamcrest-core.jar "
           command_run_test = "java " + include_class_path  + "org.junit.runner.JUnitCore " + @work.task.package + "." + @work.task.task_file_file_name[0..-6]
           response_run_test = `#{command_run_test}`
