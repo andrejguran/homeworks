@@ -61,7 +61,7 @@ class TasksController < ApplicationController
     respond_to do |format|
       if @task.save
         require "fileutils"
-        new_folder_path = File.join(upload_dir, "homework/src/tests", @task.id.to_s, @task.package)
+        new_folder_path = File.join(upload_dir, "homework/src/tests", @task.id.to_s, @task.package.tr(".", "/"))
         new_file_path = File.join(new_folder_path, @task.task_file_file_name)
         FileUtils.mkdir_p(File.dirname(new_file_path))
         FileUtils.cp @task.task_file.path, new_file_path

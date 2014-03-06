@@ -63,8 +63,8 @@ class WorksController < ApplicationController
   def generated
     @work = Work.find(params[:id])
     if params[:language] == "xslt"
-      xsl_file = File.join(upload_dir, "homework/src", @work.user.uco.to_s, @work.id.to_s, @work.task.package, @work.homework_file_name)
-      xml_file = File.join(upload_dir, "homework/src/tests", @work.task.id.to_s, @work.task.package, @work.task.task_file_file_name)
+      xsl_file = File.join(upload_dir, "homework/src", @work.user.uco.to_s, @work.id.to_s, @work.task.package.tr(".", "/"), @work.homework_file_name)
+      xml_file = File.join(upload_dir, "homework/src/tests", @work.task.id.to_s, @work.task.package.tr(".", "/"), @work.task.task_file_file_name)
       doc = Nokogiri::XML(File.read(xml_file))
       xslt = Nokogiri::XSLT(File.read(xsl_file))
 
@@ -72,7 +72,7 @@ class WorksController < ApplicationController
 
       render :text => transform
     elsif params[:language] == "xquery"
-      xq_file = File.join(upload_dir, "homework/src", @work.user.uco.to_s, @work.id.to_s, @work.task.package, @work.homework_file_name)
+      xq_file = File.join(upload_dir, "homework/src", @work.user.uco.to_s, @work.id.to_s, @work.task.package.tr(".", "/"), @work.homework_file_name)
       command = "java -cp " + Rails.root.to_s + "/lib/assets/saxon9he.jar net.sf.saxon.Query " + xq_file
       response = `#{command}`
 
@@ -88,7 +88,7 @@ class WorksController < ApplicationController
       classes_path = File.join(upload_dir, "homework/classes", @work.user.uco.to_s, @work.id.to_s)
 
       include_class_path = "-cp " + classes_path + separator + Rails.root.to_s + "/lib/assets/junit.jar" + separator + Rails.root.to_s + "/lib/assets/hamcrest-core.jar "
-      command_run_test = "java " + include_class_path  + "org.junit.runner.JUnitCore " + @work.task.package + "." + @work.task.task_file_file_name[0..-6]
+      command_run_test = "java " + include_class_path  + "org.junit.runner.JUnitCore " + @work.task.package + "." + File.basename(@work.task.task_file_file_name, ".*")
 
       response_run_test = `#{command_run_test}`
 
@@ -103,7 +103,7 @@ class WorksController < ApplicationController
   # - xslt: xml language highlights
   def homework
     @work = Work.find(params[:id])
-    file_name = File.join(upload_dir, "homework/src", @work.user.uco.to_s, @work.id.to_s, @work.task.package, @work.homework_file_name)
+    file_name = File.join(upload_dir, "homework/src", @work.user.uco.to_s, @work.id.to_s, @work.task.package.tr(".", "/"), @work.homework_file_name)
     file = File.open(file_name, "r")
     data = file.read
     file.close
@@ -139,7 +139,7 @@ class WorksController < ApplicationController
         if @work.task.language == "java"
           require "fileutils"
 
-          new_file_path = File.join(upload_dir, "homework/src", current_user.uco.to_s, @work.id.to_s, @work.task.package, @work.homework_file_name)
+          new_file_path = File.join(upload_dir, "homework/src", current_user.uco.to_s, @work.id.to_s, @work.task.package.tr(".", "/"), @work.homework_file_name)
           FileUtils.mkdir_p(File.dirname(new_file_path))
           FileUtils.cp @work.homework.path, new_file_path
 
@@ -148,14 +148,14 @@ class WorksController < ApplicationController
 
           unless response
             @work.destroy
-            return redirect_to :back, alert: 'Unable to compile'
+            return redirect_to :back, alert: 'Unable to compile' + command.to_s + " --- " + response.to_s
           end
 
           classes_path = File.join(upload_dir, "homework/classes", current_user.uco.to_s, @work.id.to_s)
           FileUtils.mkdir_p(classes_path)
           junit_path = File.join(Rails.root, "lib/assets/junit.jar")
           work_file_path = new_file_path
-          test_file_path = File.join(upload_dir, "homework/src/tests", @work.task.id.to_s, @work.task.package, @work.task.task_file_file_name)
+          test_file_path = File.join(upload_dir, "homework/src/tests", @work.task.id.to_s, @work.task.package.tr(".", "/"), File.basename(@work.task.task_file_file_name, ".*")) + ".java"
           command_compile_src_and_test = "javac -cp " + junit_path + " -d " + classes_path +" " + work_file_path + " " + test_file_path
           response_compile_src_and_test = `#{command_compile_src_and_test}`
           include_class_path = "-cp " + classes_path + separator + Rails.root.to_s + "/lib/assets/junit.jar" + separator + Rails.root.to_s + "/lib/assets/hamcrest-core.jar "
@@ -177,11 +177,11 @@ class WorksController < ApplicationController
             return redirect_to :back, alert: 'Unable to compile'
           end
 
-          new_file_path = File.join(upload_dir, "homework/src", current_user.uco.to_s, @work.id.to_s, @work.task.package, @work.homework_file_name)
+          new_file_path = File.join(upload_dir, "homework/src", current_user.uco.to_s, @work.id.to_s, @work.task.package.tr(".", "/"), @work.homework_file_name)
           FileUtils.mkdir_p(File.dirname(new_file_path))
           FileUtils.cp @work.homework.path, new_file_path
         elsif @work.task.language == "xquery"
-          new_file_path = File.join(upload_dir, "homework/src", current_user.uco.to_s, @work.id.to_s, @work.task.package, @work.homework_file_name)
+          new_file_path = File.join(upload_dir, "homework/src", current_user.uco.to_s, @work.id.to_s, @work.task.package.tr(".", "/"), @work.homework_file_name)
           FileUtils.mkdir_p(File.dirname(new_file_path))
           FileUtils.cp @work.homework.path, new_file_path
 
