@@ -97,6 +97,12 @@ class { 'install_postgres': }
 
 class { 'memcached': }
 
+# --- Java ---------------------------------------------------------------------
+
+package { 'openjdk-7-jdk':
+  ensure => present,
+}
+
 # --- Packages -----------------------------------------------------------------
 
 package { 'curl':

@@ -164,6 +164,7 @@ class WorksController < ApplicationController
           response_compile_src_and_test = `#{command_compile_src_and_test}`
 
           test_files = File.join(upload_dir, "homework/src/tests", @work.task.id.to_s, @work.task.package.tr(".", "/")) + "/*"
+          #return render text: command_compile_src_and_test
           FileUtils.cp_r Dir.glob(test_files), File.join(classes_path, @work.task.package.tr(".", "/"))
 
           include_class_path = "-cp " + classes_path + separator + Rails.root.to_s + "/lib/assets/junit.jar" + separator + Rails.root.to_s + "/lib/assets/hamcrest-core.jar "
