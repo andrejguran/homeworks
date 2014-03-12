@@ -94,7 +94,7 @@ class WorksController < ApplicationController
 
       response_run_test = `#{command_run_test}`
 
-      render :text => CodeRay.scan(response_run_test, :java).div
+      render :text => CodeRay.scan(response_run_test.encode('utf-8'), :java).div
     end
   end
 
