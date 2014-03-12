@@ -73,17 +73,17 @@ public class Task1Test extends TestCase {
         
         String note = (String)xpath.evaluate(
                 FIRSTNOTE, document, XPathConstants.STRING);
-        assertEquals("Pozn·mka", note);
+        assertEquals("Pozn√°mka", note);
         
-        solution.addNote("1", "Nov· pozn·mka");
+        solution.addNote("1", "Nov√° pozn√°mka");
         
         note = (String)xpath.evaluate(
                 FIRSTNOTE, document, XPathConstants.STRING);
-        assertEquals("Pozn·mka", note);
+        assertEquals("Pozn√°mka", note);
         
         String note2 = (String)xpath.evaluate(
                 SECONDNOTE, document, XPathConstants.STRING);
-        assertEquals("Nov· pozn·mka", note2);
+        assertEquals("Nov√° pozn√°mka", note2);
         
         assertEquals(origNotesCount+1, (Double)xpath.evaluate(
                 "count(//note)", document, XPathConstants.NUMBER), DELTA);

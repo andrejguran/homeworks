@@ -146,7 +146,7 @@ class WorksController < ApplicationController
           FileUtils.mkdir_p(File.dirname(new_file_path))
           FileUtils.cp @work.homework.path, new_file_path
 
-          command = "javac " + new_file_path
+          command = "javac" + encoding + new_file_path
           response = system(command)
 
           unless response
@@ -160,7 +160,7 @@ class WorksController < ApplicationController
           junit_path = File.join(Rails.root, "lib/assets/junit.jar")
           work_file_path = new_file_path
           test_file_path = File.join(upload_dir, "homework/src/tests", @work.task.id.to_s, @work.task.package.tr(".", "/"), File.basename(@work.task.task_file_file_name, ".*")) + ".java"
-          command_compile_src_and_test = "javac -cp " + junit_path + " -d " + classes_path +" " + work_file_path + " " + test_file_path
+          command_compile_src_and_test = "javac" + encoding + "-cp " + junit_path + " -d " + classes_path +" " + work_file_path + " " + test_file_path
           response_compile_src_and_test = `#{command_compile_src_and_test}`
 
           test_files = File.join(upload_dir, "homework/src/tests", @work.task.id.to_s, @work.task.package.tr(".", "/")) + "/*"
@@ -241,9 +241,13 @@ class WorksController < ApplicationController
   end
 
   def compile? file
-    command = "javac " + file
+    command = "javac" + encoding + file
     response = `#{command}`
     !response.include? "error"
+  end
+
+  def encoding
+      " -encoding UTF-8 "
   end
 
 end
