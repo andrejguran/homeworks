@@ -1,5 +1,5 @@
 <sales>{
-let $doc := doc("../../../tests/books/books.xml")
+let $doc := doc("books.xml")
 for $shop in $doc//shop
     let $shop_name := $shop/@name
     return

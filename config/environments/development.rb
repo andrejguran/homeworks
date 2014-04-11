@@ -6,6 +6,8 @@ Web::Application.configure do
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
 
+  config.reload_classes_only_on_change = false
+
   # Log error messages when you accidentally call methods on nil.
   config.whiny_nils = true
 
@@ -38,4 +40,6 @@ Web::Application.configure do
   config.assets.debug = true
 
   config.sass.cache_location = "/tmp/sass"
+
+  config.upload_dir = Rails.root
 end
