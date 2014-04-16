@@ -2,7 +2,6 @@ class Work < ActiveRecord::Base
 
   include ApplicationHelper
 
-
   belongs_to :task
   belongs_to :user
   attr_accessible :status, :homework, :message

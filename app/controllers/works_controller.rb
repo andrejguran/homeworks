@@ -75,14 +75,11 @@ class WorksController < ApplicationController
   # - Java: uploaded java file is copied to classes directory. File is then compiled with the test. If the response contains failures, status is marked as fail, othervise as success.
   # - XSLT and Xquery: files are moved to user's directories and waits to be generated.
   def create
-
     @work = Work.new(params[:work])
     @work.task_id = params[:task_id]
     @work.user_id = current_user.id
 
-
     if @work.save
-
       unless @work.compilable?
         @work.destroy
         return redirect_to :back, alert: 'Unable to compile'
@@ -93,64 +90,26 @@ class WorksController < ApplicationController
       @work.save
 
       return redirect_to @work, notice: 'Work was successfully created.'
-
-      if @work.task.language == "java"
-
-
-
-        @work.save
-      elsif @work.task.language == "xslt"
-        begin
-          Nokogiri::XSLT(File.read(@work.homework.path))
-        rescue
-          @work.destroy
-          return redirect_to :back, alert: 'Unable to compile'
-        end
-
-        new_file_path = File.join(Rails.application.config.upload_dir, "homework/src", current_user.uco.to_s, @work.id.to_s, @work.task.package.tr(".", "/"), @work.homework_file_name)
-        FileUtils.mkdir_p(File.dirname(new_file_path))
-        FileUtils.cp @work.homework.path, new_file_path
-      elsif @work.task.language == "xquery"
-        new_file_path = File.join(Rails.application.config.upload_dir, "homework/src", current_user.uco.to_s, @work.id.to_s, @work.task.package.tr(".", "/"), @work.homework_file_name)
-        FileUtils.mkdir_p(File.dirname(new_file_path))
-        FileUtils.cp @work.homework.path, File.dirname(new_file_path)
-
-        test_file_path = File.join(Rails.application.config.upload_dir, "homework/src/tests", @work.task.id.to_s, @work.task.package.tr(".", "/"), @work.task.task_file_file_name)
-
-        FileUtils.cp test_file_path, File.dirname(new_file_path)
-
-        command = "java -cp " + Rails.root.to_s + "/lib/assets/saxon9he.jar net.sf.saxon.Query " + new_file_path
-        response = system(command)
-
-        unless response
-          @work.destroy
-          return redirect_to :back, alert: 'Unable to compile'
-        end
-      end
-
-      redirect_to @work, notice: 'Work was successfully created.'
     else
       render action: "new"
     end
-
   end
 
   def update
     @work = Work.find(params[:id])
 
     if @work.update_attributes(params[:work])
-      edirect_to work_url(@work), notice: 'Work was successfully updated.'
+      redirect_to work_url(@work), notice: 'Work was successfully updated.'
     else
       render action: "edit"
     end
-
   end
 
   def destroy
     @work = Work.find(params[:id])
     @work.destroy
 
-    redirect_to works_url
+    redirect_to @work.task
   end
 
 end

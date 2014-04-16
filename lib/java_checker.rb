@@ -1,5 +1,4 @@
-require "fileutils"
-class JavaChecker
+class JavaChecker < Checker
 
   def self.check
     return "checkujem javu"
@@ -15,11 +14,6 @@ class JavaChecker
     response = system(command)
 
     return response
-  end
-
-  def self.destroy work
-    work_dir = File.join(Rails.application.config.upload_dir, "homework/src", work.user.uco.to_s, work.id.to_s)
-    FileUtils.rm_rf(work_dir)
   end
 
   def self.generate work

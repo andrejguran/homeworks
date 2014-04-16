@@ -10,10 +10,10 @@ class Task < ActiveRecord::Base
 
   validates :name,        :presence => true
   validates :description, :presence => true
-  validates_inclusion_of :language, :in => VALID_LANGUAGES
+  validates_inclusion_of :language, :in => lambda { |i| i.valid_languages }
 
   def valid_languages
-    VALID_LANGUAGES
+    Checker.languages.keys
   end
 
 end
