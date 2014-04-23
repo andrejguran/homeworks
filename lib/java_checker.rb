@@ -17,7 +17,6 @@ class JavaChecker < Checker
   end
 
   def self.generate work
-    require "fileutils"
     classes_path = File.join(Rails.application.config.upload_dir, "homework/classes", work.user.uco.to_s, work.id.to_s)
 
     include_class_path = "-cp " + classes_path + ":" + Rails.root.to_s + "/lib/assets/junit.jar" + ":" + Rails.root.to_s + "/lib/assets/hamcrest-core.jar "

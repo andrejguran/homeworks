@@ -13,6 +13,10 @@ class Checker
       'xquery' => {
         'class' => XqueryChecker,
         'formating' => :xml
+      },
+      'python' => {
+        'class' => PythonChecker,
+        'formating' => :python
       }
     }
   end
