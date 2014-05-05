@@ -10,6 +10,7 @@ Web::Application.routes.draw do
   get "tasks/index"
 
   match 'xslt' => 'tasks#xslt'
+  match 'tasks/:id/export' => 'tasks#export'
   match 'works/generated/:language/:id' => 'works#generated'
   match 'works/homework/:id' => 'works#homework'
 

@@ -16,4 +16,13 @@ class Task < ActiveRecord::Base
     Checker.languages.keys
   end
 
+  def to_csv(options = {})
+    CSV.generate do |csv|
+      csv << ["id", "uco", "created_at", "status"]
+      self.works.each do |work|
+        csv << [work.id, work.user.uco, work.created_at, work.status]
+      end
+    end
+  end
+
 end

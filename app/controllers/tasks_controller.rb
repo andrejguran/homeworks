@@ -117,4 +117,12 @@ class TasksController < ApplicationController
       format.xml { head :no_content }
     end
   end
+
+  def export
+    @task = Task.find(params[:id])
+
+    respond_to do |format|
+      format.csv { send_data @task.to_csv }
+    end
+  end
 end
