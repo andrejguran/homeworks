@@ -8,26 +8,31 @@
   <dd><%= @task.description %></dd>
   <dt><strong><%= model_class.human_attribute_name(:language) %>:</strong></dt>
   <dd><%= @task.language %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:deadline) %>:</strong></dt>
+  <dd><%= @task.deadline.strftime("%d.%m.%Y %T") %></dd>
   <dt><strong><%= model_class.human_attribute_name(:user_id) %>:</strong></dt>
   <dd><%= @task.user.uco %></dd>
   <dt><strong><%= model_class.human_attribute_name(:package) %>:</strong></dt>
   <dd><%= @task.package %></dd>
-  
+
   <dt><strong><%= model_class.human_attribute_name(:created_at) %>:</strong></dt>
   <dd><%= time_ago_in_words @task.created_at %> ago</dd>
 </dl>
 
 <% if user_signed_in? %>
-  <h2>Add a work:</h2>
-  <%= form_for([@task, @task.works.build]) do |f| %>
-    <%= f.file_field :homework %>
-    <div class="actions">
-      <%= f.submit %>
-    </div>
+
+  <% if @task.deadline >= Time.now.in_time_zone(Rails.application.config.time_zone) %>
+    <h2>Add a work:</h2>
+    <%= form_for([@task, @task.works.build]) do |f| %>
+      <%= f.file_field :homework %>
+      <div class="actions">
+        <%= f.submit "Submit work" %>
+      </div>
+    <% end %>
   <% end %>
 
 
-  
+
 
 
 <h2>Works</h2>

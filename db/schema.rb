@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130603182242) do
+ActiveRecord::Schema.define(:version => 20140505065533) do
 
   create_table "tasks", :force => true do |t|
     t.string   "name"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(:version => 20130603182242) do
     t.string   "task_file_content_type"
     t.integer  "task_file_file_size"
     t.datetime "task_file_updated_at"
+    t.datetime "deadline"
   end
 
   create_table "users", :force => true do |t|

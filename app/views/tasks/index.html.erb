@@ -6,6 +6,7 @@
       <th><%= model_class.human_attribute_name(:name) %></th>
       <th><%= model_class.human_attribute_name(:description) %></th>
       <th><%= model_class.human_attribute_name(:language) %></th>
+      <th><%= model_class.human_attribute_name(:deadline) %></th>
       <th><%= model_class.human_attribute_name(:user_id) %></th>
       <% if admin? %>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
@@ -18,6 +19,7 @@
         <td><%= link_to task.name, task %></td>
         <td><%= task.description %></td>
         <td><%= task.language %></td>
+        <td><%= task.deadline ? task.deadline.strftime("%d.%m.%Y %T") : '-' %></td>
         <td><%= task.user.uco %></td>
         <% if admin? %>
         <td>
@@ -35,7 +37,7 @@
   </tbody>
 </table>
 <% if admin? %>
-<%= link_to t('.new', :default => t("helpers.links.new")),
+<%= link_to t('.new', :default => t("helpers.links.new_task")),
             new_task_path,
             :class => 'btn btn-primary' %>
 <% end %>

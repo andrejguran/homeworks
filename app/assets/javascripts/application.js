@@ -12,4 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.datetimepicker
+//= require jquery.datetimepicker/init
 //= require_tree .

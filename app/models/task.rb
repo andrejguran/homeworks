@@ -1,5 +1,5 @@
 class Task < ActiveRecord::Base
-  attr_accessible :description, :name, :language, :task_file, :package
+  attr_accessible :description, :name, :language, :task_file, :package, :deadline
 
   belongs_to :user
   has_many :works

@@ -79,6 +79,10 @@ class WorksController < ApplicationController
     @work.task_id = params[:task_id]
     @work.user_id = current_user.id
 
+    if @work.task.deadline < Time.now.in_time_zone(Rails.application.config.time_zone)
+      return redirect_to :back, alert: 'It is after deadline'
+    end
+
     if @work.save
       unless @work.compilable?
         @work.destroy
