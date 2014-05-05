@@ -25,4 +25,16 @@ class Task < ActiveRecord::Base
     end
   end
 
+  def deadline_time
+    self.deadline ? self.deadline.strftime("%d.%m.%Y %T") : '-'
+  end
+
+  def before_deadline
+    unless self.deadline
+      return true
+    else
+      return self.deadline >= Time.now.in_time_zone(Rails.application.config.time_zone)
+    end
+  end
+
 end

@@ -19,7 +19,7 @@
         <td><%= link_to task.name, task %></td>
         <td><%= task.description %></td>
         <td><%= task.language %></td>
-        <td><%= task.deadline ? task.deadline.strftime("%d.%m.%Y %T") : '-' %></td>
+        <td><%= task.deadline_time %></td>
         <td><%= task.user.uco %></td>
         <% if admin? %>
         <td>

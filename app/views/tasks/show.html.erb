@@ -9,7 +9,7 @@
   <dt><strong><%= model_class.human_attribute_name(:language) %>:</strong></dt>
   <dd><%= @task.language %></dd>
   <dt><strong><%= model_class.human_attribute_name(:deadline) %>:</strong></dt>
-  <dd><%= @task.deadline.strftime("%d.%m.%Y %T") %></dd>
+  <dd><%= @task.deadline_time %></dd>
   <dt><strong><%= model_class.human_attribute_name(:user_id) %>:</strong></dt>
   <dd><%= @task.user.uco %></dd>
   <dt><strong><%= model_class.human_attribute_name(:package) %>:</strong></dt>
@@ -21,7 +21,7 @@
 
 <% if user_signed_in? %>
 
-  <% if @task.deadline >= Time.now.in_time_zone(Rails.application.config.time_zone) %>
+  <% if @task.before_deadline %>
     <h2>Add a work:</h2>
     <%= form_for([@task, @task.works.build]) do |f| %>
       <%= f.file_field :homework %>

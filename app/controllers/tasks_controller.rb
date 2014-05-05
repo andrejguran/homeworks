@@ -49,7 +49,7 @@ class TasksController < ApplicationController
   # GET /tasks/1/edit
   def edit
     @task = Task.find(params[:id])
-    @task.deadline = @task.deadline.strftime("%Y-%m-%d %T");
+    @task.deadline = @task.deadline ? @task.deadline.strftime("%Y-%m-%d %T") : nil
   end
 
   # POST /tasks
